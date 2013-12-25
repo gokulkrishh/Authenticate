@@ -31,9 +31,10 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-// adding routes
+// adding routes to http://localhost:3000/form
 app.get('/form',function(req,res)
 {
+	//reading file ./form.html in current dir
 	fs.readFile('./form.html',function(error,content)
 	{
 		if(error)
