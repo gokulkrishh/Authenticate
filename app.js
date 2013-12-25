@@ -53,6 +53,12 @@ app.post('/signup',function(res,req)
 {
 	var usr = req.body.username; //getting username object form body in req object
 	var pwd = req.body.password; //getting password object form body in req object
+	//adding user with user module in models User.js and callback funz to handle error and to redirect
+	User.addUser(usr,pwd,function(err,user)
+	{
+		if(err) throw err;
+		res.redirect('/form');
+	});
 });
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
