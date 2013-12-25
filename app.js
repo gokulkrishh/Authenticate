@@ -5,7 +5,8 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , fs = require('fs'); // added fs module to variable fs
+  , fs = require('fs') // added fs module to variable fs
+  ,User = require('./models/User.js');
 
 var app = module.exports = express.createServer();
 
@@ -49,7 +50,7 @@ app.get('/form',function(req,res)
 	});
 });
 // adding route to http://localhost:3000/signup with method post
-app.post('/signup',function(res,req)
+app.post('/signup',function(req,res)
 {
 	var usr = req.body.username; //getting username object form body in req object
 	var pwd = req.body.password; //getting password object form body in req object
@@ -57,7 +58,8 @@ app.post('/signup',function(res,req)
 	User.addUser(usr,pwd,function(err,user)
 	{
 		if(err) throw err;
-		res.redirect('/form');
+		res.redirect('/form'); //redirecting back to form
+		//console.log(usr);
 	});
 });
 app.listen(3000);

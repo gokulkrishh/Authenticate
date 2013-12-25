@@ -1,9 +1,9 @@
 var db = require('../lib/db'); //getting db file form lib we created before
 
 // A schema is way to def structure of a collection
-var UserSchema = new db.schema({
+var UserSchema = new db.Schema({
 	username :{type:String,unique:true} //username is unique and type is string
-	,password :type:String //password is string
+	,password :String //password is string
 })
 
 // defining the mongoose.model as User with its Schema
@@ -27,7 +27,7 @@ function addUser (usr,pwd,callback)
 		}
 		else // else instance in callback funz
 		{
-			callback(instance);
+			callback(null,instance);
 		}
 	});
 }
