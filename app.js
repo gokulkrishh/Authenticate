@@ -48,5 +48,11 @@ app.get('/form',function(req,res)
 		}
 	});
 });
+// adding route to http://localhost:3000/signup with method post
+app.post('/signup',function(res,req)
+{
+	var usr = req.body.username; //getting username object form body in req object
+	var pwd = req.body.password; //getting password object form body in req object
+});
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
